@@ -203,6 +203,13 @@
 		<xsd:anyAttribute/>
 	</xsd:complexType>
 
+    <xsd:complexType name="SpringProfile">
+        <xsd:sequence maxOccurs="unbounded">
+            <xsd:element name="logger" minOccurs="0" type="Logger" />
+        </xsd:sequence>
+        <xsd:attribute name="name" type="xsd:string" use="required"/>
+    </xsd:complexType>
+
 	<xsd:complexType name="Encoder">
 		<xsd:choice maxOccurs="unbounded">
 			<xsd:element name="charset" type="xsd:string" minOccurs="0" maxOccurs="1"/>
