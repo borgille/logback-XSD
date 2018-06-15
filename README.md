@@ -2,7 +2,7 @@
 
 ## Overview
 
-The purpose of this project is to provide a useful XML Schema Definition file for use in logback-spring configuration files.  This project simply extends the schema from the [logback-XSD](https://github.com/borgille/logback-XSD/blob/master/README.md) project.
+The purpose of this project is to provide a useful XML Schema Definition file for use in logback-spring configuration files.  This project simply extends the schema from the [logback-XSD](https://github.com/enricopulatzo/logback-XSD) project.
 
 A simple usage example:
 ```
