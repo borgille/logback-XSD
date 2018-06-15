@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<included
+        xmlns="http://ch.qos.logback/xml/ns/logback-spring"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://ch.qos.logback/xml/ns/logback-spring logback-spring.xsd
+http://ch.qos.logback/xml/ns/logback-spring ">
+
+    <include resource="org/springframework/boot/logging/logback/base.xml" />
+    <logger name="guru.springframework.controllers" level="DEBUG" additivity="false">
+        <appender-ref ref="CONSOLE" />
+    </logger>
+    <springProfile name="j">
+        <logger name="guru.springframework.controllers" level="DEBUG" additivity="false">
+            <appender-ref ref="CONSOLE" />
+        </logger>
+    </springProfile>
+    <springProfile name="production, sdfsdfsd">
+        <logger name="guru.springframework.controllers" level="WARN" additivity="false">
+            <appender-ref ref="FILE" />
+        </logger>
+    </springProfile>
+    <if condition='property("spring.profiles.active").contains("dev")'>
+        <then>
+            <logger name="guru.springframework.helpers" level="DEBUG" additivity="false">
+                <appender-ref ref="CONSOLE" />
+            </logger>
+        </then>
+        <else>
+            <logger name="guru.springframework.helpers" level="WARN" additivity="false">
+                <appender-ref ref="FILE" />
+            </logger>
+        </else>
+    </if>
+    <springProfile name="production, sdfsdfsd">
+        <logger name="guru.springframework.controllers" level="WARN" additivity="false">
+            <appender-ref ref="FILE" />
+        </logger>
+    </springProfile>
+    <appender name="foo" class="cllla">
+        <springProfile name="production">
+            <triggeringPolicy class="">
+                <springProfile name="foo">
+                    <maxFileSize>3</maxFileSize>
+                </springProfile>
+                <springProfile name="bar">
+                    <maxFileSize>3</maxFileSize>
+                </springProfile>
+            </triggeringPolicy>
+        </springProfile>
+    </appender>
+</included>
