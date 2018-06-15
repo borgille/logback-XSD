@@ -10,11 +10,16 @@ A simple usage example:
 <configuration
     xmlns="http://ch.qos.logback/xml/ns/logback-spring"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://ch.qos.logback/xml/ns/logback-spring https://raw.githubusercontent.com/enricopulatzo/logback-XSD/master/src/main/xsd/logback-spring.xsd">
+    xsi:schemaLocation="http://ch.qos.logback/xml/ns/logback-spring https://raw.githubusercontent.com/borgille/logback-spring-XSD/master/src/main/xsd/logback-spring.xsd">
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
       <encoder>
-        <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        <springProfile name="dev">
+          <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </springProfile>
+        <springProfile name="prod">
+          <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %5p [%t] %-40.40logger{39} : %X{deviceInfo}%m%n%wex</pattern>
+        </springProfile>
       </encoder>
     </appender>
     <root level="WARN">
